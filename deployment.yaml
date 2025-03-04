@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pipeline-deployment
-  namespace: default
+  namespace: prod
 spec:
   replicas: 3
   selector:
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: pipeline-deployment
-        image: royjith/pikube:latest-v17.2
+        image: royjith/pikube:latest-v2.0
         ports:
         - containerPort: 8501
 
@@ -23,8 +23,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: streamlit-service
-  namespace: default
+  name: prod-streamlit-service
+  namespace: prod
 spec:
   type: NodePort
   ports:
