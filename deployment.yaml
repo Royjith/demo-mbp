@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pipeline-deployment
-  namespace: prod
+  namespace: stage
 spec:
   replicas: 3
   selector:
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: pipeline-deployment
-        image: royjith/pikube:latest-v2.0
+        image: royjith/pikube:latest-v2.1
         ports:
         - containerPort: 8501
 
@@ -24,7 +24,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: prod-streamlit-service
-  namespace: prod
+  namespace: stage
 spec:
   type: NodePort
   ports:
